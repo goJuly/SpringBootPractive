@@ -28,6 +28,10 @@ public class ActorForm implements Serializable {
   @Min(1)
   @Max(47)
   private String birthplaceId;
+  @NotNull
+  @Min(0)
+  @Max(1)
+  private Integer sex;
 
   public String getName() {
     return name;
@@ -59,6 +63,13 @@ public class ActorForm implements Serializable {
   public void setBirthplaceId(String birthplaceId) {
     this.birthplaceId = birthplaceId;
   }
+  public Integer getSex() {
+    return sex;
+  }
+  public void setSex(Integer sex) {
+    this.sex = sex;
+  }
+
 
   @Override
   public String toString() {

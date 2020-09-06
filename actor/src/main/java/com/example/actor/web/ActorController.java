@@ -35,6 +35,7 @@ import com.example.actor.repository.Actor;
 import com.example.actor.repository.ActorRepository;
 import com.example.actor.repository.Prefecture;
 import com.example.actor.repository.PrefectureRepository;
+import com.example.actor.service.ActorService;
 
 @Controller
 public class ActorController {
@@ -48,6 +49,12 @@ public class ActorController {
 
   @Autowired
   MessageSource msg;
+
+  private ActorService actorService;
+  @Autowired
+  public ActorController(ActorService actorService) {
+      this.actorService = actorService;
+  }
 
   @InitBinder
   public void initBinder(WebDataBinder binder) {
@@ -160,6 +167,15 @@ public class ActorController {
     for (Entry<String, Object> entry : mm.entrySet()) {
       logger.debug("key:{}", entry.getKey());
     }
+  }
+  @RequestMapping(value = "/actor/cat", method = RequestMethod.GET)
+  public ModelAndView cat() {
+    logger.debug("Actor + cat");
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("Actor/index");
+    List<Actor> list = actorService.getCatActor();
+    mv.addObject("list", list);
+    return mv;
   }
 
 }

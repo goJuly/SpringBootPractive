@@ -36,6 +36,8 @@ public class Actor {
   private Date birthday;
   @Column(name="birthplace_id")
   private Integer birthplaceId;
+  @Column(name="sex")
+  private Integer sex;
   @Temporal(TemporalType.TIMESTAMP)
   @Column(name="update_at")
   private Date updateAt;
@@ -43,6 +45,10 @@ public class Actor {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name="birthplace_id", insertable = false, updatable = false )
   private Prefecture pref;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name="sex", insertable = false, updatable = false )
+  private Gender gender;
 
   public Integer getId() {
     return id;
@@ -80,20 +86,30 @@ public class Actor {
   public void setBirthplaceId(Integer birthplaceId) {
     this.birthplaceId = birthplaceId;
   }
+  public Integer getSex() {
+    return sex;
+  }
+  public void setSex(Integer sex) {
+    this.sex = sex;
+  }
   public Date getUpdateAt() {
     return updateAt;
   }
   public void setUpdateAt(Date updateAt) {
     this.updateAt = updateAt;
   }
-
   public Prefecture getPref() {
     return pref;
   }
   public void setPref(Prefecture pref) {
     this.pref = pref;
   }
-
+  public Gender getGender() {
+    return gender;
+  }
+  public void setGender(Gender gender) {
+    this.gender = gender;
+  }
   @Override
   public String toString() {
       return ToStringBuilder.reflectionToString(this, ToStringStyle.DEFAULT_STYLE);
