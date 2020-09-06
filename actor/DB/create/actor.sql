@@ -1,0 +1,17 @@
+CREATE TABLE `actor` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(30) NOT NULL,
+	`height` SMALLINT(6) NULL DEFAULT NULL,
+	`blood` VARCHAR(2) NULL DEFAULT NULL,
+	`birthday` DATE NULL DEFAULT NULL,
+	`birthplace_id` SMALLINT(6) NULL DEFAULT NULL,
+	`sex` SMALLINT(1) NOT NULL DEFAULT 0,
+	`update_at` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+	PRIMARY KEY (`id`),
+	INDEX `FK_3ppbqwvyh6jikkn2eswdfx44u` (`birthplace_id`),
+	CONSTRAINT `FK_3ppbqwvyh6jikkn2eswdfx44u` FOREIGN KEY (`birthplace_id`) REFERENCES `prefecture` (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=28
+;
